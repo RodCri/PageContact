@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Contact Dev Challenges</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200;300;400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <main class="content">
+    <figure class="page__figure">
+      <img class="page__icon" src="assets/contact-form-icon.svg" alt="">
+    </figure>
+    <section class="page__info">
+      <h1 class="page__title">Interested in our business pricing?</h1>
+      <p class="page__description">Fill out the form to view details and we’ll contact you as soon as possible.</p>
+    </section>
+    <form action="" class="page__form">
+      <div class="form__group">
+        <label for="name" class="form__label" id="name">Name</label>
+        <input type="text" class="form__input" placeholder="Ethan Johnson" id="name__input">
+        <label for="name" class="form__label" id="company">Company Email</label>
+        <input type="text" class="form__input" placeholder="ethat@johnson.com" id="company__input">
+      </div>
+      <div class="form__group">
+        <label for="name" class="form__label" id="company__size">Company Size</label>
+        <div class="dropdown" id="company__drop">
+          <input type="checkbox" id="dropdown">
+          <label class="dropdown__face" for="dropdown">
+            50-100 employees
+            <div class="dropdown__arrow"></div>
+          </label>
+          <ul class="dropdown__items">
+            <li>🙂 150-200 employees</li>
+            <li>🙂 250-300 employees</li>
+          </ul>
+        </div>
+        <svg>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+            <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </svg>
+        <label for="name" class="form__label" id="sub">Subject</label>
+        <label for="subject" id="subb">
+          <span class="subject__title">Building Landing pages</span>
+        </label>
+        <input type="checkbox" id="subject">
+        <ul class="form__options">
+          <li>Lorem Ipsum</li>
+          <li>Lorem Ipsum</li>
+        </ul>
+      </div>
+      <div class="form__area">
+        <label for="name" class="form__label">Subject</label>
+        <textarea name="textarea" rows="10" cols="50" class="form__message">50-100 employees</textarea>
+      </div>
+      <button class="form__cta" id="contact">Contact Sales</button>
+    </form>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,281 @@
+@use 'variables' as v;
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 62.5%;
+}
+body{
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 1.6rem;
+  min-height: 100vh;
+}
+.content{
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  background: url('../assets/bg-image.svg') no-repeat center;
+  padding: 1rem;
+  color: v.$text-label;
+  .page__figure{
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    .page__icon{
+      width: 100%;
+      max-width: 99px;
+    }
+  }
+  .page__info{
+    margin: 0 auto;
+    max-width: 400px;
+    .page__title{
+      font-size: 4rem;
+      text-align: center;
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+    .page__description{
+      font-size: 1.8rem;
+      line-height: 1.4;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+  }
+  .page__form{
+    margin: 0 auto;
+    width: 90%;
+    max-width: 900px;
+    background-color: rgba($color: v.$text-placeholder, $alpha: .3);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .form__group{
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(4, max-content);
+      gap: .5rem;
+      @media(min-width:920px){
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(2, max-content);
+        column-gap: 2rem;
+        #name{
+          grid-column: 1/1;
+          grid-row: 1/1;
+        }
+        #name__input{
+          grid-column: 1/1;
+          grid-row: 2/2;
+        }
+        #company{
+          grid-column: 2/2;
+          grid-row: 1/1;
+        }
+        #company__input{
+          grid-column: 2/2;
+          grid-row: 2/2;
+        }
+        #company__size{
+          grid-column: 1/1;
+          grid-row: 1/1;
+        }
+        #company__drop{
+          grid-column: 1/1;
+          grid-row: 2/2;
+        }
+        #sub{
+          grid-column: 2/2;
+          grid-row: 1/1;
+        }
+        #subb{
+          grid-column: 2/2;
+          grid-row: 2/2;
+        }
+      }
+      
+      .form__label{
+        font-size: 1.2rem;
+        font-weight: 300;
+      }
+      .form__input{
+        width: 100%;
+        height: 40px;
+        padding: 0 2rem;
+        border-radius: 1rem;
+        border: none;
+        outline-color: v.$text-btn;
+        color: v.$text-form;
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        &::placeholder {
+          color: v.$text-placeholder;
+          opacity: 1; /* Firefox */
+        }
+      }
+      .email__ok{
+        border: 2px solid rgb(4, 159, 4);
+      }
+      .email__failed{
+        border: 2px solid rgb(198, 6, 6);
+        color: rgb(198, 6, 6);
+      }
+      .dropdown {
+        position: relative;
+        width: 100%;
+        height: 40px;
+        filter: url(#goo);
+        margin-bottom: 2rem;
+        &__face,
+        &__items {
+          background-color: #fff;
+          padding: 10px;
+          border-radius: 1rem;
+          color: v.$text-form;
+          font-weight: 600;
+          font-size: 1.4rem;
+        }
+        &__text{
+          color: v.$text-form;
+          font-weight: 600;
+        }
+        &__face {
+          display: block;
+          position: relative;
+        }
+      
+        &__items {
+          margin: 0;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          border-radius: 1rem;
+          width: 100%;
+          list-style: none;
+          list-style-type: none;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          visibility: hidden;
+          z-index: -1;
+          opacity: 0;
+          transition: all 0.4s cubic-bezier(0.93, 0.88, 0.1, 0.8);
+          color: v.$text-form;
+          font-weight: 600;
+          &::before {
+            content: "";
+            background-color: #fff;
+            position: absolute;
+            bottom: 100%;
+            right: 20%;
+            height: 40px;
+            width: 20px;
+          }
+        }
+        &__arrow {
+          border-bottom: 2px solid #000;
+          border-right: 2px solid #000;
+          position: absolute;
+          top: 50%;
+          right: 30px;
+          width: 10px;
+          height: 10px;
+          transform: rotate(45deg) translateY(-50%);
+          transform-origin: right;
+        }
+      
+        input {
+          display: none;
+          &:checked ~ .dropdown__items {
+            top: calc(100% + 25px);
+            visibility: visible;
+            opacity: 1;
+          }
+        }
+      }
+      svg {
+        display: none;
+      }
+      .subject__title {
+        height: 40px;
+        padding: 0 1rem;
+        border-radius: 1rem;
+        background : v.$bg-input; 
+        color : v.$text-form;
+        margin-top: .5rem;
+        cursor : pointer;
+        font-size: 1.4rem;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @media(min-width: 920px){
+          margin-top: 0;
+        }
+      }
+      .subject__title::after {
+        content: url('../assets/Expand_down.svg');
+        padding-right: 1rem;
+      }
+      .form__options {
+        width: 100%;
+        height: 0;
+        clear:both;
+        margin-top: 1rem;
+        overflow: hidden;
+        text-align: center;
+        transition: height .4s ease;
+        background-color: v.$bg-input;
+        border-radius: 1rem;
+      }
+      .form__options li {
+        padding : 1.2rem 1rem;
+        color: v.$text-form;
+        font-weight: 600;
+        text-align: left;
+        font-size: 1.4rem;
+      }
+      
+      #subject {position: absolute; opacity: 0; height: 0px;}    
+      
+      #subject:checked + .form__options {height: auto;} 
+    }
+    .form__area{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      .form__label{
+        font-size: 1.2rem;
+      }
+      .form__message{
+        padding: 1rem;
+        border-radius: 1rem;
+        font-family: 'Be Vietnam Pro', sans-serif;
+        color: v.$text-form;
+        font-weight: 600;
+        line-height: 1.4;
+        font-size: 1.4rem;
+      }
+    }
+    .form__cta{
+      width: 100%;
+      height: 50px;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: v.$text-btn;
+      border-radius: 1rem;
+      border: none;
+      margin-bottom: 4rem;
+      cursor: pointer;
+      &:hover{
+        background-color: v.$text-btn;
+        color: v.$text-placeholder;
+      }
+    }
+  }
+}

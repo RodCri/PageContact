@@ -1,0 +1,289 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Be Vietnam Pro", sans-serif;
+  font-size: 1.6rem;
+  min-height: 100vh;
+}
+
+.content {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  background: url("../assets/bg-image.svg") no-repeat center;
+  padding: 1rem;
+  color: #F8FAFC;
+}
+.content .page__figure {
+  width: 100%;
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+.content .page__figure .page__icon {
+  width: 100%;
+  max-width: 99px;
+}
+.content .page__info {
+  margin: 0 auto;
+  max-width: 400px;
+}
+.content .page__info .page__title {
+  font-size: 4rem;
+  text-align: center;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+}
+.content .page__info .page__description {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+.content .page__form {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 900px;
+  background-color: rgba(205, 213, 224, 0.3);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.content .page__form .form__group {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, max-content);
+  gap: 0.5rem;
+}
+@media (min-width: 920px) {
+  .content .page__form .form__group {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, max-content);
+    column-gap: 2rem;
+  }
+  .content .page__form .form__group #name {
+    grid-column: 1/1;
+    grid-row: 1/1;
+  }
+  .content .page__form .form__group #name__input {
+    grid-column: 1/1;
+    grid-row: 2/2;
+  }
+  .content .page__form .form__group #company {
+    grid-column: 2/2;
+    grid-row: 1/1;
+  }
+  .content .page__form .form__group #company__input {
+    grid-column: 2/2;
+    grid-row: 2/2;
+  }
+  .content .page__form .form__group #company__size {
+    grid-column: 1/1;
+    grid-row: 1/1;
+  }
+  .content .page__form .form__group #company__drop {
+    grid-column: 1/1;
+    grid-row: 2/2;
+  }
+  .content .page__form .form__group #sub {
+    grid-column: 2/2;
+    grid-row: 1/1;
+  }
+  .content .page__form .form__group #subb {
+    grid-column: 2/2;
+    grid-row: 2/2;
+  }
+}
+.content .page__form .form__group .form__label {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+.content .page__form .form__group .form__input {
+  width: 100%;
+  height: 40px;
+  padding: 0 2rem;
+  border-radius: 1rem;
+  border: none;
+  outline-color: #4036A9;
+  color: #111729;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.content .page__form .form__group .form__input::placeholder {
+  color: #CDD5E0;
+  opacity: 1; /* Firefox */
+}
+.content .page__form .form__group .email__ok {
+  border: 2px solid rgb(4, 159, 4);
+}
+.content .page__form .form__group .email__failed {
+  border: 2px solid rgb(198, 6, 6);
+  color: rgb(198, 6, 6);
+}
+.content .page__form .form__group .dropdown {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  filter: url(#goo);
+  margin-bottom: 2rem;
+}
+.content .page__form .form__group .dropdown__face, .content .page__form .form__group .dropdown__items {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 1rem;
+  color: #111729;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+.content .page__form .form__group .dropdown__text {
+  color: #111729;
+  font-weight: 600;
+}
+.content .page__form .form__group .dropdown__face {
+  display: block;
+  position: relative;
+}
+.content .page__form .form__group .dropdown__items {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  border-radius: 1rem;
+  width: 100%;
+  list-style: none;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  visibility: hidden;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.93, 0.88, 0.1, 0.8);
+  color: #111729;
+  font-weight: 600;
+}
+.content .page__form .form__group .dropdown__items::before {
+  content: "";
+  background-color: #fff;
+  position: absolute;
+  bottom: 100%;
+  right: 20%;
+  height: 40px;
+  width: 20px;
+}
+.content .page__form .form__group .dropdown__arrow {
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg) translateY(-50%);
+  transform-origin: right;
+}
+.content .page__form .form__group .dropdown input {
+  display: none;
+}
+.content .page__form .form__group .dropdown input:checked ~ .dropdown__items {
+  top: calc(100% + 25px);
+  visibility: visible;
+  opacity: 1;
+}
+.content .page__form .form__group svg {
+  display: none;
+}
+.content .page__form .form__group .subject__title {
+  height: 40px;
+  padding: 0 1rem;
+  border-radius: 1rem;
+  background: #FFFFFF;
+  color: #111729;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (min-width: 920px) {
+  .content .page__form .form__group .subject__title {
+    margin-top: 0;
+  }
+}
+.content .page__form .form__group .subject__title::after {
+  content: url("../assets/Expand_down.svg");
+  padding-right: 1rem;
+}
+.content .page__form .form__group .form__options {
+  width: 100%;
+  height: 0;
+  clear: both;
+  margin-top: 1rem;
+  overflow: hidden;
+  text-align: center;
+  transition: height 0.4s ease;
+  background-color: #FFFFFF;
+  border-radius: 1rem;
+}
+.content .page__form .form__group .form__options li {
+  padding: 1.2rem 1rem;
+  color: #111729;
+  font-weight: 600;
+  text-align: left;
+  font-size: 1.4rem;
+}
+.content .page__form .form__group #subject {
+  position: absolute;
+  opacity: 0;
+  height: 0px;
+}
+.content .page__form .form__group #subject:checked + .form__options {
+  height: auto;
+}
+.content .page__form .form__area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.content .page__form .form__area .form__label {
+  font-size: 1.2rem;
+}
+.content .page__form .form__area .form__message {
+  padding: 1rem;
+  border-radius: 1rem;
+  font-family: "Be Vietnam Pro", sans-serif;
+  color: #111729;
+  font-weight: 600;
+  line-height: 1.4;
+  font-size: 1.4rem;
+}
+.content .page__form .form__cta {
+  width: 100%;
+  height: 50px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #4036A9;
+  border-radius: 1rem;
+  border: none;
+  margin-bottom: 4rem;
+  cursor: pointer;
+}
+.content .page__form .form__cta:hover {
+  background-color: #4036A9;
+  color: #CDD5E0;
+}
+
+/*# sourceMappingURL=style.css.map */
